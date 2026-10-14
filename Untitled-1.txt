@@ -1,0 +1,25 @@
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
+  -H 'Content-Type: application/json' \
+  -H 'X-goog-api-key: AQ.Ab8RN6JoTGYVaq5R8eP4SNskGp1AgvY_irHev1ei0NWt-8cNHQ' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "Explain how AI works in a few words"
+          }
+        ]
+      }
+    ]
+  }'
+
+{
+  "nombre": "Elena",
+  "apellido": "De Troya",
+  "edad": 25,
+  "direccion": {
+    "calle": "Av. ABC",
+    "CP": 67170
+  }
+}
