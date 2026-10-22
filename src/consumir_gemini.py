@@ -80,7 +80,7 @@ def obtener_dato_de_prueba(pregunta): #pregunta = "Confirma la conexión"
 
     costo = calcular_costo(datos, 0.00000075, 0.00000375)
     print(f"El costo de la solicitud es: ${costo:.6f} USD")
-    texto = extraer_texto[datos]
+    texto = extraer_texto(datos)
     datos_formateados = parsear_respuesta_json(texto, claves_requeridas=["categoria", "nivel"])
     return datos_formateados
 
@@ -110,6 +110,8 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     return costo
     
 def parsear_respuesta_json(texto, claves_requeridas=None):
+    #datos = {"categoría": "lento", "abc": 1, "nivel": X}
+       
     texto_limpio = texto.strip()
     texto_limpio = re.sub(r"^```(?:json)?\s*", "", texto_limpio)
     texto_limpio = re.sub(r"\s*```$", "", texto_limpio)
@@ -117,10 +119,11 @@ def parsear_respuesta_json(texto, claves_requeridas=None):
         datos = json.loads(texto_limpio)
     except json.JSONDecodeError:
         raise ValueError("El texto no es un JSON válido.")
+    
     if claves_requeridas:
         faltantes = [clave for clave in claves_requeridas if clave not in datos]
         if faltantes:
-            raise ValueError["La respuesta del modelo no tiene la estructura esperada."]
+            raise ValueError("La respuesta del modelo no tiene la estructura esperada.")
     return datos
 
 try:
