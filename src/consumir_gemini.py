@@ -10,7 +10,7 @@ import re
 load_dotenv()
 
 #Constantes
-MODELO = "gemini-3.5-flash-lite"
+MODELO = "gemini-3.6-flash"
 URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -115,7 +115,7 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     '''
     tokens_entrada = uso["promptTokenCount"]
     tokens_salida = uso["candidatesTokenCount"]
-    tokens_razonamiento = uso["thoughtsTokenCount"] #revisar si existe o no, si no existe, poner 0
+    tokens_razonamiento = uso.get("thoughtsTokenCount", 0)
     costo = (tokens_entrada * precio_entrada) + ((tokens_salida + tokens_razonamiento) * precio_salida)
     return costo
     
