@@ -1,19 +1,20 @@
-import json
 import os
-import re
 import requests
 from dotenv import load_dotenv
 
 import time
 
+import json
+import re
+
 load_dotenv()
 
-#constantes
-MODELO = "gemini-3.6-flash"
+#Constantes
+MODELO = "gemini-3.5-flash-lite"
 URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-#función para crear la solicitud
+#Función para crear la solicitud
 def armar_peticion(modelo, pregunta, system_instruction, response_schema=None): #pregunta = "Confirma la conexión"
     if not pregunta:
         raise ValueError("La pregunta no puede estar vacía.")
@@ -31,14 +32,24 @@ def armar_peticion(modelo, pregunta, system_instruction, response_schema=None): 
     
     return url, body
 
-#función envía la petición
+#Función envía la petición
 def enviar_peticion(url, body):
     try:
         respuesta = requests.post(url, json=body, timeout=30)
     except requests.exceptions.ConnectionError:
         raise RuntimeError("No se pudo conectar con el servicio. Intenta de nuevo en unos momentos.")
     except requests.exceptions.Timeout:
-        raise RuntimeError("La solicitud ha tardado demasiado tiempo en completarse. Intenta de nuevo.")
+        raise TimeoutError("Se agotó el tiempo. Intenta de nuevo en unos momentos.")
+
+    if respuesta.status_code in(401, 403):
+        raise ValueError("Credencial inválida o sin permiso. Revisa tu GEMINI_API_KEY")
+    if respuesta.status_code >= 500:
+        raise TimeoutError("El proveedor no pudo procesar la petición. Hay que esperar y reintentar")
+    if respuesta.status_code == 429:
+        segundos = respuesta.headers.get("Retry-After")
+        mensaje = f"Límite excedido. Reintentar en {segundos}s" if segundos else "Límite excedido."
+        raise TimeoutError(mensaje)
+    
     if respuesta.status_code != 200:
         raise RuntimeError(f"Error en la solicitud: {respuesta.status_code}")
         
@@ -67,8 +78,7 @@ def obtener_dato_de_prueba(pregunta): #pregunta = "Confirma la conexión"
     }
     
     system_instruction = "Eres un asistente amigable y respondes en máximo 2 palabras."
-    #Eres un asistente de ingeniería automotriz, que responde a preguntas sobre fallas y errores de vehículos. Responde de manera clara y concisa, proporcionando soluciones prácticas y pasos a seguir para resolver problemas automotrices. Evita respuestas vagas o genéricas, y enfócate en brindar información útil y específica para ayudar al usuario a solucionar su problema.
-    url, body = armar_peticion("gemini-3.6-flash",pregunta, system_instruction, response_schema)
+    url, body = armar_peticion(MODELO, pregunta, system_instruction, response_schema)
 
     inicio = time.perf_counter() #Empezar el contador
 
@@ -106,37 +116,33 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     tokens_entrada = uso["promptTokenCount"]
     tokens_salida = uso["candidatesTokenCount"]
     tokens_razonamiento = uso["thoughtsTokenCount"] #revisar si existe o no, si no existe, poner 0
-    costo = ((tokens_entrada * precio_entrada) + (tokens_salida + tokens_razonamiento) * precio_salida)
+    costo = (tokens_entrada * precio_entrada) + ((tokens_salida + tokens_razonamiento) * precio_salida)
     return costo
     
 def parsear_respuesta_json(texto, claves_requeridas=None):
-    #datos = {"categoría": "lento", "abc": 1, "nivel": X}
-       
+    
     texto_limpio = texto.strip()
     texto_limpio = re.sub(r"^```(?:json)?\s*", "", texto_limpio)
     texto_limpio = re.sub(r"\s*```$", "", texto_limpio)
+    
     try:
         datos = json.loads(texto_limpio)
     except json.JSONDecodeError:
-        raise ValueError("El texto no es un JSON válido.")
-    
-    if claves_requeridas:
+        raise ValueError("La respuesta del modelo no es JSON válido")
+
+    if  claves_requeridas:
         faltantes = [clave for clave in claves_requeridas if clave not in datos]
         if faltantes:
             raise ValueError("La respuesta del modelo no tiene la estructura esperada.")
     return datos
 
-try:
-    print(obtener_dato_de_prueba("Confirma en una frase corta que la conexión con la API de Gemini está funcionando"))
-except (ValueError, RuntimeError) as error:
-    print("No se pudo completar la operación: ", error)
-
-'''
-Ejecute 4 veces la misma petición y ante cada una se calcule e imprima: latencia, costo, respuesta
-
-Vuelvo a hacer lo mismo con un modelo distinto (3 modelos)
-
-EL objetivo es que elijamos el mejor modelo para mi proyecto 
-
-Prompt debe ser algo relacionado con mi proyecto
-'''
+if __name__ == "__main__":
+    for i in range(15):
+        print(f"\n-- Intento {i+1} ---")
+        try:
+            print(obtener_dato_de_prueba("Confirma en una frase corta que la conexión con la API de Gemini está funcionando"))
+        except TimeoutError as error:
+            print(f"Límite alcanzado: {error}. Esperando 10 segundos adicionales...")
+            time.sleep(10) #Espera 3 segundos antes de la siguiente petición
+        except (ValueError, RuntimeError) as error:
+            print(f"No se pudo completar la operación: ", error)
