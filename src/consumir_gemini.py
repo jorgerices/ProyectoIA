@@ -137,7 +137,7 @@ def parsear_respuesta_json(texto, claves_requeridas=None):
     return datos
 
 if __name__ == "__main__":
-    for i in range(15):
+    for i in range(1):
         print(f"\n-- Intento {i+1} ---")
         try:
             print(obtener_dato_de_prueba("Confirma en una frase corta que la conexión con la API de Gemini está funcionando"))
