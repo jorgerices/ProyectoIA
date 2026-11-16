@@ -1,4 +1,9 @@
-from pipeline_limpieza import procesar_texto
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from src.pipeline_limpieza import procesar_texto
 
 def test_procesar_texto_normaliza_mayusculas_y_puntuacion():
     resultado = procesar_texto(" ¡¡La Tierra tiene 4600 millones de años!.")

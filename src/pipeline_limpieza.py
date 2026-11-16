@@ -20,6 +20,10 @@ def vectorizar(tokens: list[str]) -> Counter:
     """Cuenta cuántas veces aparece cada token."""
     return Counter(tokens)
 
+def procesar_texto(texto):
+    texto_limpio = limpiar_texto(texto)
+    return tokenizar(texto_limpio)
+
 if __name__ == "__main__":
     texto = "El gato, el perro y el gato corren."
     texto_limpio = limpiar_texto(texto)

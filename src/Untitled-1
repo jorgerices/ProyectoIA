@@ -1,0 +1,8 @@
+{
+    "output": [
+        {
+            "type": "text",
+            "text": "El estado del envío AR12345 es: En tránsito. Historial: Salió del almacén el 01/01/2024, llegó a la ciudad de destino el 02/01/2024, y actualmente está en proceso de entrega."
+        }
+    ]
+}

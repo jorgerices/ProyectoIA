@@ -1,0 +1,90 @@
+import json
+
+revision_manual = [
+    # ================= 5 CASOS CON F1 MÁS BAJO =================
+    {
+        "consulta": "¿Qué herramientas se utilizan en la etapa de prospección geológica?",
+        "f1": 0.08,
+        "correccion_factual": "si",
+        "completitud": "no",
+        "contradiccion": "no",
+        "nota": "F1 bajo real: la referencia enumera herramientas concretas (mapas, brújulas, GPS, martillos, software), pero el modelo responde con una definición genérica sin nombrar ninguna herramienta.",
+    },
+    {
+        "consulta": "¿Por qué es importante la geología para las carreras de técnico e ingeniería en minas?",
+        "f1": 0.1818,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Falso negativo por paráfrasis: usa verbos equivalentes ('ubicar, evaluar y extraer yacimientos' en vez de 'exploración, explotación y planificación'), lo que desploma la coincidencia léxica pese a ser correcto.",
+    },
+    {
+        "consulta": "¿Qué representa una discordancia angular en una sección o columna estratigráfica?",
+        "f1": 0.2222,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Falso negativo por sinónimos y límite de 15 palabras: resume con precisión ('interrupción erosiva entre estratos antiguos inclinados y capas más recientes horizontales'), pero usa léxico distinto a la referencia de 32 palabras.",
+    },
+    {
+        "consulta": "¿Qué rol tiene el geólogo en una faena minera?",
+        "f1": 0.24,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Falso negativo por paráfrasis: expresa la misma idea ('localiza, evalúa y controla yacimientos para optimizar su extracción') con distintas palabras clave respecto a la referencia ('modelar, estimar recursos y guiar').",
+    },
+    {
+        "consulta": "¿Qué tipos de límites existen entre las placas tectónicas?",
+        "f1": 0.2609,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Penalización por asimetría de longitud: nombra correctamente los tres límites (divergentes, convergentes y transformantes), pero el tope de 15 palabras del prompt impide incluir la cinemática de cada uno que detalla la referencia.",
+    },
+    # ================= 5 CASOS CON F1 MÁS ALTO =================
+    {
+        "consulta": "¿Cómo contrasta la dinámica eruptiva entre un magma basáltico y uno riolítico?",
+        "f1": 0.4211,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Alta precisión (0.86) pero baja cobertura (0.28): captura el contraste eruptivo esencial (efusivas/fluidas vs. viscosas/explosivas), pero la restricción de 15 palabras obliga a omitir el contenido de sílice y volátiles.",
+    },
+    {
+        "consulta": "¿Qué características geomorfológicas permiten distinguir un valle glaciar maduro de un valle fluvial?",
+        "f1": 0.4815,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Precisión muy alta (0.87) al acertar la geometría clave (perfil en U vs. perfil en V), aunque omite los procesos genéticos (abrasión glaciar, fondo plano y laderas abruptas) presentes en la referencia extensa.",
+    },
+    {
+        "consulta": "¿Cómo se produce un terremoto?",
+        "f1": 0.5714,
+        "correccion_factual": "si",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Coincidencia léxica alta en el mecanismo ('liberación repentina de energía acumulada' y 'placas tectónicas'), pero omite mencionar explícitamente la 'falla geológica' donde ocurre la ruptura.",
+    },
+    {
+        "consulta": "¿Qué diferencia hay entre un mineral y una roca?",
+        "f1": 0.6,
+        "correccion_factual": "parcialmente",
+        "completitud": "parcialmente",
+        "contradiccion": "no",
+        "nota": "Falso positivo parcial: obtiene el segundo F1 más alto porque calza 'agregado de minerales', pero simplifica mineral como 'sustancia pura', omitiendo que debe ser natural, inorgánica, sólida y cristalina.",
+    },
+    {
+        "consulta": "¿Qué es la geología?",
+        "f1": 0.6667,
+        "correccion_factual": "si",
+        "completitud": "si",
+        "contradiccion": "no",
+        "nota": "El F1 más alto del conjunto porque la referencia es corta (12 palabras) y comparte la estructura inicial exacta, especificando composición, estructura e historia de la Tierra.",
+    },
+]
+
+if __name__ == "__main__":
+    with open("revision_manual.json", "w", encoding="utf-8") as archivo:
+        json.dump(revision_manual, archivo, indent=2, ensure_ascii=False)

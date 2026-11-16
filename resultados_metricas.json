@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "consulta": "¿Qué es la geología?",
+    "referencia": "La geología es la ciencia que estudia la Tierra y sus procesos.",
+    "respuesta": "La geología es la ciencia que estudia la composición, estructura e historia de la Tierra.",
+    "precision": 0.6,
+    "cobertura": 0.75,
+    "f1": 0.6666666666666665
+  },
+  {
+    "id": 2,
+    "consulta": "¿Por qué es importante la geología para las carreras de técnico e ingeniería en minas?",
+    "referencia": "La geología es fundamental para la exploración y explotación de recursos minerales, así como para la planificación de proyectos mineros.",
+    "respuesta": "Permite ubicar, evaluar y extraer los yacimientos minerales de manera eficiente y segura.",
+    "precision": 0.23076923076923078,
+    "cobertura": 0.15,
+    "f1": 0.18181818181818185
+  },
+  {
+    "id": 3,
+    "consulta": "¿Qué rol tiene el geólogo en una faena minera?",
+    "referencia": "Modelar el yacimiento, estimar recursos y guiar la extracción segura y eficiente",
+    "respuesta": "El geólogo localiza, evalúa y controla los yacimientos minerales para optimizar su extracción.",
+    "precision": 0.23076923076923078,
+    "cobertura": 0.25,
+    "f1": 0.24000000000000002
+  },
+  {
+    "id": 4,
+    "consulta": "¿Qué herramientas se utilizan en la etapa de prospección geológica?",
+    "referencia": "Se utilizan mapas geológicos, brújulas, GPS, martillos geológicos y software de modelado.",
+    "respuesta": "Son instrumentos técnicos y tecnológicos empleados para detectar yacimientos minerales en el subsuelo.",
+    "precision": 0.07692307692307693,
+    "cobertura": 0.08333333333333333,
+    "f1": 0.08
+  },
+  {
+    "id": 5,
+    "consulta": "¿Qué diferencia hay entre un mineral y una roca?",
+    "referencia": "Un mineral es una sustancia cristalina natural, inorgánica, sólida con características físicas y químicas determinadas, y una roca es un agregado de uno o más minerales.",
+    "respuesta": "Un mineral es una sustancia pura y la roca es un agregado de minerales.",
+    "precision": 0.8571428571428571,
+    "cobertura": 0.46153846153846156,
+    "f1": 0.6
+  },
+  {
+    "id": 6,
+    "consulta": "Con respecto a su origen, ¿cómo puedo diferenciar entre rocas ígneas, metamórficas y sedimentarias?",
+    "referencia": "Las rocas ígneas se forman por solidificación de un magma, las metamórficas se forman por transformación de rocas preexistentes bajo presión y temperatura, y las sedimentarias se forman por acumulación y litificación de sedimentos.",
+    "respuesta": "Se diferencian según provengan de magma enfriado, sedimentos acumulados o rocas alteradas por presión.",
+    "precision": 0.5,
+    "cobertura": 0.20588235294117646,
+    "f1": 0.2916666666666667
+  },
+  {
+    "id": 7,
+    "consulta": "Con respecto a su textura, ¿cómo se diferencian rocas ígneas, metamórficas y sedimentarias?",
+    "referencia": "A grandes rasgos, las rocas ígneas tienen una textura granular, las metamórficas tienen una textura fibrosa o laminada, y las sedimentarias tienen una textura clástica.",
+    "respuesta": "Las ígneas son cristalinas, las sedimentarias presentan granos clásticos y las metamórficas exhiben foliación.",
+    "precision": 0.5,
+    "cobertura": 0.28,
+    "f1": 0.358974358974359
+  },
+  {
+    "id": 8,
+    "consulta": "Explica la diferencia textural entre un pórfido y una roca fanerítica, e indica qué revela su historia de enfriamiento",
+    "referencia": "El pórfido presenta una textura porfídica con grandes fenocristales en una matriz de grano fino, lo que sugiere un enfriamiento en dos etapas: una cristalización lenta inicial en profundidad seguida de un ascenso rápido y enfriamento somero. El granito fanerítico muestra cristales uniformemente visibles a simple vista , reflejando un enfriamiento lento y continuo en una cámara magmática profunda.",
+    "respuesta": "El pórfido bimodal revela un enfriamiento en dos etapas, y la fanerítica equigranular, enfriamiento lento.",
+    "precision": 0.6666666666666666,
+    "cobertura": 0.1724137931034483,
+    "f1": 0.273972602739726
+  },
+  {
+    "id": 9,
+    "consulta": "¿Qué diferencia geométrica y cinemática existe entre una falla normal y una falla inversa?",
+    "referencia": "La falla normal se genera por esfuerzos extensivos (tensión), donde le bloque colgante (hanging wall) se desliza hacia abajo respecto al bloque yacente (footwall). La falla inversa se produce por compresión tectónica, provocando que el bloque colgante ascienda respecto al yacente.",
+    "respuesta": "La falla normal desciende el bloque superior por extensión; la inversa lo eleva por compresión.",
+    "precision": 0.6666666666666666,
+    "cobertura": 0.24390243902439024,
+    "f1": 0.35714285714285715
+  },
+  {
+    "id": 10,
+    "consulta": "¿Cuál es la diferencia fundamental entre el magma y la lava?",
+    "referencia": "El magma es roca fundida que se encuentra bajo la superficie de la Tierra, mientras que la lava es magma que ya ha emergido a la superficie a través de un volcán o una fisura.",
+    "respuesta": "El magma se encuentra bajo la superficie terrestre y la lava en el exterior.",
+    "precision": 0.6428571428571429,
+    "cobertura": 0.2571428571428571,
+    "f1": 0.36734693877551017
+  },
+  {
+    "id": 11,
+    "consulta": "¿Qué es la meteorización?",
+    "referencia": "Es el proceso físico, químico o biológico mediante el cual las rocas expuestas a la atmósfera se fragmentan o descomponen in situ debido al contacto con el agua, el aire y los organismos, sin que los materiales sean transportados.",
+    "respuesta": "Es el proceso de desintegración y alteración de las rocas en la superficie terrestre.",
+    "precision": 0.5,
+    "cobertura": 0.1794871794871795,
+    "f1": 0.2641509433962264
+  },
+  {
+    "id": 12,
+    "consulta": "¿Cómo se produce un terremoto?",
+    "referencia": "Por la liberación repentina de energía acumulada a lo largo de una falla geológica debido al movimiento continuo de las placas tectónicas.",
+    "respuesta": "Se produce por la liberación repentina de energía acumulada en las placas tectónicas.",
+    "precision": 0.7692307692307693,
+    "cobertura": 0.45454545454545453,
+    "f1": 0.5714285714285714
+  },
+  {
+    "id": 13,
+    "consulta": "¿Qué tipos de límites existen entre las placas tectónicas?",
+    "referencia": "Existen tres tipos principales de límites: divergentes (las placas se separan y generan nueva corteza), convergentes (las placas chocan provocando subducción o cordilleras) y transformantes (las placas se deslizan lateralmente entre sí).",
+    "respuesta": "Los límites tectónicos se dividen en divergentes, convergentes y transformantes según su movimiento relativo.",
+    "precision": 0.42857142857142855,
+    "cobertura": 0.1875,
+    "f1": 0.26086956521739124
+  },
+  {
+    "id": 14,
+    "consulta": "¿Cómo se diferencian geoquímicamente los magmas generados en arcos volcánicos de subducción de aquellos formados en dorsales oceánicas",
+    "referencia": "Los magmas de arco muestran un enriquecimiento selectivo en elementos litófilos de radio iónico grande (LILE) y un marcado empobrecimiento en elementos de alta intensidad de campo (HFSE); en contraste, los basaltos de dorsal (MORB) derivan de la fusión un manto superior empobrecido sin componente de slab, con patrones planos o depletados en elementos incompatibles sin anomalías negativas de Nb-Ta.",
+    "respuesta": "Los magmas de arco contienen más volátiles y elementos litófilos que los de dorsal.",
+    "precision": 0.7142857142857143,
+    "cobertura": 0.16666666666666666,
+    "f1": 0.2702702702702703
+  },
+  {
+    "id": 15,
+    "consulta": "¿Qué diferencia fundamental existe entre una cuenca de antearco y una cuenca de retroarco",
+    "referencia": "La cuenca de antearco se ubica entre la fosa oceánica y el arco magmático y acumula sedimentos marinos asociados al prisma de acreción; la cuenca de retroarco se ubica detrás del arco magmático respecto a la fosa y suele formarse en regímenes extensivos provocado por el retroceso de la fosa",
+    "respuesta": "El antearco se sitúa frente al arco volcánico y el retroarco detrás de este.",
+    "precision": 0.7142857142857143,
+    "cobertura": 0.2,
+    "f1": 0.3125
+  },
+  {
+    "id": 16,
+    "consulta": "¿Cómo se forman las lavas almohadilladas?",
+    "referencia": "Se forman cuando el magma basáltico entra en erupción bajo el agua, típicamente en dorsales oceánicas. El contacto inmediato con el agua fría solidifica instantáneamente la superficie exterior creando una corteza curvadsa con forma de almohada.",
+    "respuesta": "Se forman por el enfriamiento rápido de la lava al erupcionar bajo el agua.",
+    "precision": 0.5714285714285714,
+    "cobertura": 0.2222222222222222,
+    "f1": 0.32
+  },
+  {
+    "id": 17,
+    "consulta": "¿Cómo se interpreta la presencia de estratificación cruzada en rocas sedimentarias clásticas?",
+    "referencia": "Indica la migración de formas de lecho (como dunas o barras subacuáticas/eólicas) bajo la acción de un flujo unidireccional. Permite deducir la dirección de las paleocorrientes y definir el ambiente de depositación.",
+    "respuesta": "Indica la sedimentación por corrientes de agua o viento y su dirección de flujo.",
+    "precision": 0.5714285714285714,
+    "cobertura": 0.25,
+    "f1": 0.34782608695652173
+  },
+  {
+    "id": 18,
+    "consulta": "¿Qué representa una discordancia angular en una sección o columna estratigráfica?",
+    "referencia": "Representa una superficie de erosión que trunca capas sedimentarias inclinadas o plegadas, sobre las cuales se depositaron horizontalmente sedimentos más jóvenes. Sugiere un hito temporal prolongado y una fase de deformación tectónica.",
+    "respuesta": "Representa una interrupción erosiva entre estratos antiguos inclinados y capas más recientes horizontales.",
+    "precision": 0.38461538461538464,
+    "cobertura": 0.15625,
+    "f1": 0.22222222222222224
+  },
+  {
+    "id": 19,
+    "consulta": "¿Qué características geomorfológicas permiten distinguir un valle glaciar maduro de un valle fluvial?",
+    "referencia": "El valle glaciar presenta una sección transversal en forma de 'U', caracterizada por fondo plano y laderas abruptas debido a la abrasión y sobreexcavación del hielo. El valle fluvial presenta un perfil en 'V' esculpido principalmente por el agua.",
+    "respuesta": "El valle glaciar maduro presenta un perfil en U, a diferencia del fluvial en V.",
+    "precision": 0.8666666666666667,
+    "cobertura": 0.3333333333333333,
+    "f1": 0.48148148148148145
+  },
+  {
+    "id": 20,
+    "consulta": "¿Cómo contrasta la dinámica eruptiva entre un magma basáltico y uno riolítico?",
+    "referencia": "El magma basáltico posee baja viscosidad y bajo contenido de sílice y volátiles, lo que propicia erupciones predominantemente efusivas (coladas de lava fluidas). El magma riolítico, rico en sílice y volátiles, presenta alta viscosidad, generando erupciones altamente explosivas con emisión de flujos piroclásticos.",
+    "respuesta": "El magma basáltico genera erupciones efusivas y fluidas; el riolítico, erupciones viscosas y explosivas.",
+    "precision": 0.8571428571428571,
+    "cobertura": 0.27906976744186046,
+    "f1": 0.4210526315789474
+  }
+]
